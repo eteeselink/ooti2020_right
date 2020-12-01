@@ -10,13 +10,5 @@ namespace Kiosk
             VoterName = voterName;
             Score = score;
         }
-
-        public override Question Question { 
-            get => throw new System.NotImplementedException(); 
-            init => throw new System.NotImplementedException(); 
-        }
-        public override string VoterName { 
-            get => throw new System.NotImplementedException();
-            init => throw new System.NotImplementedException(); }
     }
 }
