@@ -12,25 +12,13 @@ namespace Kiosk
     {
         static void Main(string[] args)
         {
-            //var survey = new Survey("questions.json");
-            // var questions = survey.GetQuestions();
-            // hard-coded for now
-            var question1 = new SingleChoiceQuestion("Are you doing well?");
-            var question5 = new SingleChoiceQuestion("Have you got everything ready?");
-            var question6 = new SingleChoiceQuestion("Are you ready to leave for dinner?");
-            // var question2 = new MultipleChoiceQuestion("What do you prefer for dinner?", new string[]{"Sandwich", "Noodle", "Rice", "Nothing"});
-            // var question3 = new ScoreQuestion("How would you rank your work this afternoon");
-            // var question4 = new MultipleChoiceQuestion("Which do you prefer for lunch?", new string[]{"Sandwich", "Noodle", "Rice", "Nothing"});
-            var questions = new List<Question>();
-            questions.Add(question1);
-            questions.Add(question5);
-            questions.Add(question6);
-            // questions.Add(question2);
-            // questions.Add(question3);
-            // questions.Add(question4);
-
+            var survey = new Survey("questions.json");
+            var questions = survey.GetQuestions();
+            
             var voterAnswerMap = new SortedDictionary<string, List<Answer>>();
 
+            //hacky
+            var yesAnswers = new List<int>();
 
             // var users = getUsers();
             // hardcoded for now
@@ -45,11 +33,14 @@ namespace Kiosk
                 
                 var answers = new List<Answer>();
                 foreach (var q in questions) {
-                    var answer = q.Ask();
+                    var answer = q.ask();
                     answers.Add(answer);
                 }
                 voterAnswerMap.Add(user, answers);
             }
+
+            // Count yes/no result
+            
             
             // Create a canvas
 

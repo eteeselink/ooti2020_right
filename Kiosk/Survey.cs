@@ -23,7 +23,7 @@ namespace Kiosk
 
         public Survey(string filePath) {
             // read file directly
-            this.filePath = filePath;
+            /*this.filePath = filePath;
             if (File.Exists(this.filePath)) {
                 Console.Write(this.filePath);
                 string text = File.ReadAllText(this.filePath);
@@ -34,7 +34,7 @@ namespace Kiosk
                 // }
             } else {
                 Console.Write("COULD NOT READ");
-            }
+            }*/
         }
 
         public Question[] GetQuestions() {
