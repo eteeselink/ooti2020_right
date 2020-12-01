@@ -12,7 +12,14 @@ namespace Kiosk
 
     public class Survey {
         private string filePath;
-        private SingleChoiceQuestion[] questions;
+        
+        private static Question q1 = new SingleChoiceQuestion("Is this working?");
+        private static Question q2 = new SingleChoiceQuestion("Is this hardcoded?");
+        private static Question q3 = new SingleChoiceQuestion("Is this a valid approach?");
+        private static Question q4 = new SingleChoiceQuestion("Is this now valid?");
+
+        private Question[] questions = {q1, q2, q3, q4};
+
 
         public Survey(string filePath) {
             // read file directly
@@ -21,12 +28,10 @@ namespace Kiosk
                 Console.Write(this.filePath);
                 string text = File.ReadAllText(this.filePath);
                 // Console.Write(text);
-                // using FileStream openStream = File.OpenRead(this.filePath);
-                // this.questions = await JsonSerializer.DeserializeAsync<WeatherForecast>(openStream);
-                this.questions = JsonSerializer.Deserialize<SingleChoiceQuestion[]>(filePath);
-                foreach (Question question in this.questions) {
-                    question.ask();
-                }
+                // this.questions = JsonSerializer.Deserialize<Question>(filePath);
+                // foreach (Question question in this.questions) {
+                //     question.ask();
+                // }
             } else {
                 Console.Write("COULD NOT READ");
             }
