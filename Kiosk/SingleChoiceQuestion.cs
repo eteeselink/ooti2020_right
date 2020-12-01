@@ -6,6 +6,11 @@ namespace Kiosk
     {
         string Question;
 
+        public SingleChoiceQuestion(string question)
+        {
+            Question = question;
+        }
+
         public override Answer ask()
         {
             var response = AnsiConsole.Prompt(
