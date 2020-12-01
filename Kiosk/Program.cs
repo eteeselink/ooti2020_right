@@ -11,6 +11,7 @@ namespace Kiosk
     {
         static void Main(string[] args)
         {
+            var Survey = new Survey("questions.json");
             // var survey = new Survey();
             // var question = survey.GetQuestion();
 

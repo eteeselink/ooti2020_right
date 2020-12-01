@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -11,17 +12,28 @@ namespace Kiosk
 
     public class Survey {
         private string filePath;
-        private Question[] questions;
+        private SingleChoiceQuestion[] questions;
 
         public Survey(string filePath) {
+            // read file directly
             this.filePath = filePath;
             if (File.Exists(this.filePath)) {
-                this.questions = JsonSerializer.Deserialize<Question>(filePath);
+                Console.Write(this.filePath);
+                string text = File.ReadAllText(this.filePath);
+                // Console.Write(text);
+                // using FileStream openStream = File.OpenRead(this.filePath);
+                // this.questions = await JsonSerializer.DeserializeAsync<WeatherForecast>(openStream);
+                this.questions = JsonSerializer.Deserialize<SingleChoiceQuestion[]>(filePath);
+                foreach (Question question in this.questions) {
+                    Console.Write(question.GetQuestion());
+                }
+            } else {
+                Console.Write("COULD NOT READ");
             }
         }
 
         public Question[] GetQuestions() {
-            return questions;
+            return this.questions;
         }
 
         // public MultipleChoiceQuestion GetQuestion() {
