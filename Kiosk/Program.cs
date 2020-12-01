@@ -17,14 +17,12 @@ namespace Kiosk
             
             var voterAnswerMap = new SortedDictionary<string, List<Answer>>();
 
-            //hacky
-            var yesAnswers = new List<int>();
-
             // var users = getUsers();
             // hardcoded for now
             string[] users = {"Dan", "Leon", "Niki"};
             
             foreach (var user in users) {
+
                 // Styled text announcing the next user
                 var rule = new Rule("[red]" + user + "[/]");
                 rule.LeftAligned();
@@ -39,8 +37,6 @@ namespace Kiosk
                 voterAnswerMap.Add(user, answers);
             }
 
-            // Count yes/no result
-            
             
             // Create a canvas
 
