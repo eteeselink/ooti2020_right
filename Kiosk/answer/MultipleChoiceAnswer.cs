@@ -1,4 +1,5 @@
-namespace Kiosk{
+namespace Kiosk
+{
     public class MultipleChoiceAnswer : Answer{
 
         public string Response;

@@ -1,4 +1,5 @@
-namespace Kiosk{
+namespace Kiosk
+{
     public class SingleChoiceAnswer : Answer{
 
         public bool Response;

@@ -1,4 +1,5 @@
-namespace Kiosk{
+namespace Kiosk
+{
     public class ScoreAnswer : Answer{
 
         public int Score;
