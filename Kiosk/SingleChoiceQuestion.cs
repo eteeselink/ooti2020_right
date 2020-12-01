@@ -2,16 +2,19 @@ namespace Kiosk
 {
     class SingleChoiceQuestion : Question
     {
-        public string GetQuestion() {
-            return this.question;
-        };
+        public override string GetAnswer()
+        {
+            throw new System.NotImplementedException();
+        }
 
-        public string GetOptions() {
-            return this.options;
-        };
+        public override string GetOptions()
+        {
+            throw new System.NotImplementedException();
+        }
 
-        public string GetAnswer() {
-            return this.answer;
-        };
+        public override string GetQuestion()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
