@@ -1,4 +1,5 @@
 ﻿using Spectre.Console;
+using System.Collections.Generic;
 
 namespace Kiosk
 {
@@ -11,28 +12,39 @@ namespace Kiosk
     {
         static void Main(string[] args)
         {
-            var Survey = new Survey("questions.json");
-            // var survey = new Survey();
-            // var question = survey.GetQuestion();
+            //var survey = new Survey("questions.json");
+            // var questions = survey.GetQuestions();
+            // hard-coded for now
+            var question1 = new SingleChoiceQuestion("Are you doing well?");
+            var question2 = new MultipleChoiceQuestion("What did you have for lunch?", new string[]{"Sandwitch", "Noodle", "Rice", "Nothing"});
+            var questions = new List<Question>();
+            questions.Add(question1);
+            questions.Add(question2);
 
-            // var prompt = new TextPrompt<string>(question.Question);
-            // foreach(var a in question.Answers) {
-            //     prompt.AddChoice(a);
-            // }
-            // var answer = AnsiConsole.Prompt(prompt);
+            var voterAnswerMap = new SortedDictionary<string, List<Answer>>();
 
-            // if(answer == survey.GetCorrectAnswer()) {
-            //     AnsiConsole.Markup("That's [underline green]correct[/]!");
-            // }
-            // else {
-            //     AnsiConsole.Markup("That's [underline red]wrong[/]!");
-            // }
+            // var users = getUsers();
+            // hardcoded for now
+            string[] users = {"Dan", "Leon", "Niki"};
+            
+            foreach (var user in users) {
+                // Styled text announcing the next user
+                var rule = new Rule("[red]" + user + "[/]");
+                rule.LeftAligned();
+                AnsiConsole.Render(rule);
+                AnsiConsole.MarkupLine("[bold]" + user + "[/] - It's your turn to answer the questions.");
+                
+                var answers = new List<Answer>();
+                foreach (var q in questions) {
+                    var answer = q.ask();
+                    answers.Add(answer);
+                }
+                voterAnswerMap.Add(user, answers);
+            }
+            
             // Create a canvas
-
-            DetailedResult detailedResult = new DetailedResult();
-
-            detailedResult.show();
-
+            //DetailedResult detailedResult = new DetailedResult();
+            //detailedResult.show();
 
         }
     }
