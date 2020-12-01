@@ -25,7 +25,7 @@ namespace Kiosk
                 // this.questions = await JsonSerializer.DeserializeAsync<WeatherForecast>(openStream);
                 this.questions = JsonSerializer.Deserialize<SingleChoiceQuestion[]>(filePath);
                 foreach (Question question in this.questions) {
-                    Console.Write(question.GetQuestion());
+                    question.ask();
                 }
             } else {
                 Console.Write("COULD NOT READ");
