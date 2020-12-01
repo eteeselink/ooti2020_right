@@ -43,9 +43,9 @@ namespace Kiosk
             }
             
             // Create a canvas
-            //DetailedResult detailedResult = new DetailedResult();
-            //detailedResult.show();
+            YesNoDetailedResult detailedResult = new YesNoDetailedResult();
 
+            detailedResult.show(7, 5);
         }
     }
 }
