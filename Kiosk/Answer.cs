@@ -1,9 +1,8 @@
 namespace Kiosk
 {
-    public struct Answer
+    public abstract class Answer
     {
-        public Question Question{get; init;}
-        public string VoterName{get; init;} 
-        public bool Response{get; init;}
+        public abstract Question Question{get; init;}
+        public abstract string VoterName{get; init;}
     }
 }

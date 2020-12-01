@@ -1,20 +1,20 @@
+using Spectre.Console;
+
 namespace Kiosk
 {
-    class SingleChoiceQuestion : Question
+    public class SingleChoiceQuestion : Question
     {
-        public override string GetAnswer()
-        {
-            throw new System.NotImplementedException();
-        }
+        string Question;
 
-        public override string GetOptions()
+        public override Answer ask()
         {
-            throw new System.NotImplementedException();
-        }
+            var response = AnsiConsole.Prompt(
+                new TextPrompt<string>(Question)
+                    .InvalidChoiceMessage("[red]Please answer yes or no[/]")
+                    .AddChoice("yes")
+                    .AddChoice("no"));
 
-        public override string GetQuestion()
-        {
-            throw new System.NotImplementedException();
+            return new SingleChoiceAnswer(this, "voterName", response == "yes");
         }
     }
 }
